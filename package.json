@@ -1,0 +1,14 @@
+{
+  "name": "load-tool-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "go": "go run ./go-server/main.go",
+    "ga": "docker run --rm -i -m 10g --cpus=\"5.0\" --cpuset-cpus=\"0-4\" --network=\"host\" --name=\"load\" -v $PWD/gat/conf:/opt/gatling/conf -v $PWD/gat/user-files:/opt/gatling/user-files -v $PWD/gat/results:/opt/gatling/results denvazh/gatling",
+    "k6": "docker run --rm -i -m 10g --cpus=\"6.0\" --cpuset-cpus=\"0-5\" --network=\"host\" --name=\"load\" loadimpact/k6 run - <./k6/k6.js",
+    "jm": "docker run --rm -i -m 10g --cpus=\"5.0\" --cpuset-cpus=\"0-4\" --network=\"host\" --name=\"load\" -v $PWD/jmeter:/home/jmeter vmarrazzo/jmeter -n -t ./jmeter/jmeter.jmx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
